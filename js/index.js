@@ -1,4 +1,18 @@
-fetch("https://api.artic.edu/api/v1/artworks?page=1&limit=100")
+// Copyright logo
+const footerElement = document.createElement("footer");
+footerElement.className = "footer";
+document.body.append(footerElement);
+
+const today = new Date();
+const thisYear = today.getFullYear();
+
+const footer = document.querySelector(".footer");
+const copyright = document.createElement("p");
+copyright.innerHTML = `© Anya Maker ${thisYear}`;
+footer.appendChild(copyright);
+
+// API fetch, insert Artworks
+fetch("https://api.artic.edu/api/v1/artworks?page=1&limit=20")
     .then(response => {
         if (!response.ok) {
             throw new Error(`Request failed: ${response.status}`);
@@ -42,6 +56,7 @@ fetch("https://api.artic.edu/api/v1/artworks?page=1&limit=100")
                         const closeBtn = document.createElement("button");
                         closeBtn.textContent = "×";
                         closeBtn.classList.add("close-btn");
+                        closeBtn.setAttribute("aria-label", "Close details"); // accessibility
                         closeBtn.addEventListener("click", () => {
                             detailsSection.style.display = "none";
                             document.body.classList.remove("show-details");
@@ -52,6 +67,12 @@ fetch("https://api.artic.edu/api/v1/artworks?page=1&limit=100")
                         const bigImg = document.createElement("img");
                         bigImg.src = `${iiif_url}/${artwork.image_id}/full/843,/0/default.jpg`;
                         bigImg.alt = artwork.title || "Untitled";
+
+                        // Click to open the image in a new tab
+                        bigImg.addEventListener("click", () => {
+                            const fullImgUrl = `${iiif_url}/${artwork.image_id}/full/1686,/0/default.jpg`;
+                            window.open(fullImgUrl, "_blank");
+                        });
 
                         // Atr info
                         const info = document.createElement("p");
