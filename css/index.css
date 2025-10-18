@@ -2,14 +2,28 @@ body {
     font-family: "Poppins", Arial, sans-serif;
     background-color: #d9f7f8;
     margin: 0;
-    padding: 30px;
+    padding: 0 30px;
     box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
     text-decoration: underline;
-    margin-top: 0;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 960px;
+}
+
+.about p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
 }
 
 #Art h2 {
@@ -36,7 +50,7 @@ h1 {
     padding: 15px;
     cursor: pointer;
     box-sizing: border-box;
-    height: 320px;
+    height: 300px;
 }
 
 #Art li span {
@@ -79,9 +93,10 @@ h1 {
     display: block;
     margin: 20px auto 10px auto;
     max-width: 90%;
-    max-height: 65vh;
+    max-height: 60vh;
     border-radius: 8px;
     object-fit: contain;
+    cursor: zoom-in;
 }
 
 #artDetails p {
@@ -106,4 +121,98 @@ h1 {
 
 #artDetails button.close-btn:hover {
     color: #000;
+}
+
+.footer {
+    text-align: right;
+}
+
+.footer p {
+    margin-bottom: 8px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    h1 {
+        margin-top: 30px;
+    }
+
+    .about p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    #Art ul {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    #Art li {
+        height: 260px;
+        padding: 12px;
+    }
+
+    #Art li span {
+        min-height: 35px;
+    }
+
+    #artDetails {
+        max-width: 500px;
+        padding: 18px;
+    }
+
+    .footer {
+        font-size: .95rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+    body {
+        padding: 0 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .about {
+        padding: 0 10px;
+    }
+
+    .about p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    #Art ul {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 10px;
+        margin: 0 15px;
+    }
+
+    #Art li {
+        height: 220px;
+        padding: 10px;
+    }
+
+    #Art li img {
+        height: 130px;
+    }
+
+    #Art li span {
+        font-size: 0.9rem;
+    }
+
+    #artDetails {
+        max-width: 85% !important;
+        padding: 15px;
+    }
+
+    #artDetails img {
+        max-height: 50vh;
+    }
+
+    .footer {
+        font-size: .9rem;
+    }
 }
